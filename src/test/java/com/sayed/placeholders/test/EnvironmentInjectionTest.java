@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.BeanCreationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
@@ -46,10 +45,12 @@ public class EnvironmentInjectionTest {
 
   public static class InjectFromPropertiesWithRequiredProperties {
   
-    @Test(expected=BeanCreationException.class)
+    @Test
     public void assertBlankDiscProperties() {
       try (AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext(EnvironmentConfigWithRequiredProperties.class)) {
-		
+    	  BlankDisc blankDisc = annotationConfigApplicationContext.getBean(BlankDisc.class);
+    	  assertEquals("The Beatles", blankDisc.getArtist());
+          assertEquals("Sgt. Peppers Lonely Hearts Club Band", blankDisc.getTitle());
       };
     }
     

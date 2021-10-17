@@ -9,7 +9,7 @@ import org.springframework.core.env.Environment;
 import com.sayed.placeholders.BlankDisc;
 
 @Configuration
-@PropertySource("classpath:/com/soundsystem/app.properties")
+@PropertySource("classpath:app.properties")
 public class EnvironmentConfig {
 
   @Autowired
